@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class PageBase extends TestBase {
     WebDriver driver;
-
     RandomGenerator randomGenerator;
 
     public PageBase(WebDriver driver) {

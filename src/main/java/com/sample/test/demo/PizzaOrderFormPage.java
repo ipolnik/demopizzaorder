@@ -42,7 +42,7 @@ public class PizzaOrderFormPage extends PageBase implements IPizzaOrder {
     }
 
     public void enterRandomPickupInformation(){
-    inputText(name, randomGenerator.randomStringFromGiven("QfRfgfgfER" + " " + "QfRfgfgfER", 3, 10));
+    inputText(name, randomGenerator.randomStringFromGiven("AbCdEfgHI#$%" + " " + "AbCdEfgHI#$%", 3, 10));
         inputText(email, randomGenerator.randomStringFromGiven("QfRfgfgfER@", 3, 10)+ ".com");
         inputText(phone, "+1" + randomGenerator.randomStringFromGiven("0123456789", 10, 10));
     }
@@ -58,12 +58,24 @@ public class PizzaOrderFormPage extends PageBase implements IPizzaOrder {
     }
 
     public String getDialogBoxText(){
-        String dialog = getElementText(dialogText);
-        return dialog;
+        return getElementText(dialogText);
     }
 
     public String getPizzaCost(){
-        String cost = getElementTextByValue(pizza1Cost);
-        return cost;
+        return getElementTextByValue(pizza1Cost);
+    }
+
+    public void clickResetButton(){
+        click(resetButton);
+    }
+
+    public String getDropDownValueSize(){
+          String value = getElementTextByValue(pizza1);
+          return value;
+    }
+
+    public String getDropDownValueTopping1(){
+        String value = getElementTextByValue(pizza1Toppings1);
+        return value;
     }
 }

@@ -15,8 +15,8 @@ public class RandomGenerator {
             char c = chars[random.nextInt(chars.length)];
             sb.append(c);
         }
-        String output = sb.toString();
 
+        String output = sb.toString();
         return output;
     }
 }

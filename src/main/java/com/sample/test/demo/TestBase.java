@@ -5,7 +5,6 @@ import static org.testng.Assert.fail;
 import com.sample.test.demo.configuration.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -26,7 +25,7 @@ public class TestBase {
     public void init() throws Throwable {
         config = new Configuration();
         url = config.getUrl();
-        initializelDriver();
+        initializeDriver();
         navigateToSite();
 
     }
@@ -44,7 +43,7 @@ public class TestBase {
         }
     }
 
-    private void initializelDriver() {
+    private void initializeDriver() {
         if (config.getBrowser().equalsIgnoreCase("chrome")) {
             if (config.getPlatform().equalsIgnoreCase("mac")) {
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/mac/chromedriver");
