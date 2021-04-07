@@ -1,51 +1,37 @@
-## Demo Challenge
+**Note!**
 
-#### Instructions
-1. Complete the project setup as listed below
-2. Complete the Excerise
-3. Email a synopsis of your work and the link to your git repo containing the completed exercise to: sqedemonstrationchallenge@nbcuni.com
+1. Chrome driver was updated from v74 to 89
+2. URL and platform values was changed in properties file(please update it before run localy)
+3. "Reset pizza type and toppings" test case is expected to fail on second soft assert.(Reset button doesn't reset toppings)
 
+**Test cases**
+**Select random pizza and place an order**
+ 1. Navigate to Pizza Order Form page.
+ 2. Select random size of pizza.
+ 3. Select random topping 1.
+ 4. Select random topping 2.
+ 5. Enter random Quantity
+ 6. Enter random pick up information
+ 7. Choose random payment method
+ 8. Click place an order
+ 9. Verify that order successfully placed
+          
+ **Reset pizza size and toppings**
+  1. Navigate to Pizza Order Form page.
+  2. Select random type of pizza.
+  3. Select random topping 1.
+  4. Select random topping 2.
+  7. Click Reset button
+  8. Verify that pizza type and toppings dropdown is reset to default
+             
+ **User not able to place an order if pickup information is missing**
+  1. Navigate to Pizza Order Form page.
+  2. Select random type of pizza.
+  3. Select random topping 1.
+  4. Select random topping 2.
+  5. Enter random Quantity
+  6. Choose random payment method
+  7. Click place an order
+  8. Verify missing name and phone number message is shown
 
-#### Expectations
-We will be evaluating
-1. Naming conventions
-2. Code readability
-3. Code encapsulation
-4. Code structure and organization
-5. Quality of test cases
-6. Variety  of testing types (examples: boundary, happy path, negative, etc) 
-
-
-#### Technologies
-1. Java
-2. Selenium
-3. TestNG
-4. Any other technologies you see fit.
-5. Please do not use a BDD framework.
-
-#### Project Setup
-1. Clone this project to your git account in a public repo
-2. Setup the project in your IDE
-3. Open the index.html file from src/test/resource/files in a browser
-4. Copy the url from the browser and update the url value in src/test/resource/config.properties to be the copied url.
-5. In src/test/resources update the config.properties file platform for your OS.
-6. From command line run mvn clean install -U -DskipTests
-7. Make sure you can run the DemoTest and chrome launches.  You may need to update the chromedriver in /src/test/resources/chromedriver/ to the version that works with your browser
-   https://chromedriver.chromium.org/
-
-
-#### Exercise
-1. Use the site at the index.html
-2. There are helper locators provided for you in the src/test/resource/files/locators.txt file.
-3. In the Test Cases section below:
-  - List all of the test cases you think are necessary to test the sample page
-  - Note any defects or issues observed
-4. Code up a few examples of:
-  - At least one happy path case placing an order
-  - At least one error case
-5. When complete please check your code into your public git repo
-
-#### Test Cases
-
- 1.  
 
