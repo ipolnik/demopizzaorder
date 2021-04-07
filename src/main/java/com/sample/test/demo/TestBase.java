@@ -5,9 +5,7 @@ import static org.testng.Assert.fail;
 import com.sample.test.demo.configuration.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 public class TestBase {
 
@@ -58,6 +56,4 @@ public class TestBase {
             fail("Unsupported bfrowser " + config.getBrowser());
         }
     }
-
-
 }

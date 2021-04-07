@@ -8,14 +8,9 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class PizzaOrderHappyPathTests extends TestBase {
-    String randomPizzaType = PizzaTypes.generateRandomType().getDisplayName();
-    String randomPizzaTopping1 = PizzaToppings.generateRandomTopping().getDisplayName();
-    String randomPizzaTopping2 = PizzaToppings.generateRandomTopping().getDisplayName();
-    String cost;
 
     @Test
     public void pizzaOrderHappyPath() {
-
         /**
          * Select random pizza and place an order
          * 1. Navigate to Pizza Order Form page.
@@ -28,13 +23,15 @@ public class PizzaOrderHappyPathTests extends TestBase {
          * 8. Click place an order
          * 9. Verify that order successfully placed
          */
+        String randomPizzaType = PizzaTypes.generateRandomType().getDisplayName();
+
         driver.get(url);
 
         pizzaOrderFormPage.selectRandomPizzaSize(randomPizzaType);
 
-        pizzaOrderFormPage.selectRandomPizzaTopping1(randomPizzaTopping1);
+        pizzaOrderFormPage.selectRandomPizzaTopping1(PizzaToppings.generateRandomTopping().getDisplayName());
 
-        pizzaOrderFormPage.selectRandomPizzaTopping2(randomPizzaTopping2);
+        pizzaOrderFormPage.selectRandomPizzaTopping2(PizzaToppings.generateRandomTopping().getDisplayName());
 
         pizzaOrderFormPage.selectRandomQuantity(1, 10);
 
@@ -42,7 +39,7 @@ public class PizzaOrderHappyPathTests extends TestBase {
 
         pizzaOrderFormPage.selectRandomPayment();
 
-        cost = pizzaOrderFormPage.getPizzaCost();
+        String cost = pizzaOrderFormPage.getPizzaCost();
 
         pizzaOrderFormPage.clickPlaceOrderButton();
 
@@ -65,11 +62,11 @@ public class PizzaOrderHappyPathTests extends TestBase {
 
             driver.get(url);
 
-            pizzaOrderFormPage.selectRandomPizzaSize(randomPizzaType);
+            pizzaOrderFormPage.selectRandomPizzaSize(PizzaTypes.generateRandomType().getDisplayName());
 
-            pizzaOrderFormPage.selectRandomPizzaTopping1(randomPizzaTopping1);
+            pizzaOrderFormPage.selectRandomPizzaTopping1(PizzaToppings.generateRandomTopping().getDisplayName());
 
-            pizzaOrderFormPage.selectRandomPizzaTopping2(randomPizzaTopping2);
+            pizzaOrderFormPage.selectRandomPizzaTopping2(PizzaToppings.generateRandomTopping().getDisplayName());
 
             pizzaOrderFormPage.clickResetButton();
 
