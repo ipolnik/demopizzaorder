@@ -2,7 +2,10 @@ package com.sample.test.demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class PageBase extends TestBase {
     WebDriver driver;
@@ -15,6 +18,11 @@ public class PageBase extends TestBase {
 
     public void selectFromDropDown(By dropdownElement, String value) {
         Select dropdown = new Select(driver.findElement(dropdownElement));
+        dropdown.selectByValue(value);
+    }
+
+    public void selectFromDropDown(WebElement dropdownElement, String value) {
+        Select dropdown = new Select(dropdownElement);
         dropdown.selectByValue(value);
     }
 
@@ -33,5 +41,13 @@ public class PageBase extends TestBase {
 
     protected String getElementTextByValue(By element){
         return driver.findElement(element).getAttribute("value");
+    }
+
+    protected String getElementTextByValue(WebElement element){
+        return element.getAttribute("value");
+    }
+
+    protected List<WebElement> findElements(By by){
+        return driver.findElements(by);
     }
 }

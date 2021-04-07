@@ -29,9 +29,7 @@ public class PizzaOrderHappyPathTests extends TestBase {
 
         pizzaOrderFormPage.selectRandomPizzaSize(randomPizzaType);
 
-        pizzaOrderFormPage.selectRandomPizzaTopping1(PizzaToppings.generateRandomTopping().getDisplayName());
-
-        pizzaOrderFormPage.selectRandomPizzaTopping2(PizzaToppings.generateRandomTopping().getDisplayName());
+        pizzaOrderFormPage.selectRandomPizzaTopping(PizzaToppings.generateRandomToppings(2));
 
         pizzaOrderFormPage.selectRandomQuantity(1, 10);
 
@@ -64,16 +62,15 @@ public class PizzaOrderHappyPathTests extends TestBase {
 
             pizzaOrderFormPage.selectRandomPizzaSize(PizzaTypes.generateRandomType().getDisplayName());
 
-            pizzaOrderFormPage.selectRandomPizzaTopping1(PizzaToppings.generateRandomTopping().getDisplayName());
-
-            pizzaOrderFormPage.selectRandomPizzaTopping2(PizzaToppings.generateRandomTopping().getDisplayName());
+            pizzaOrderFormPage.selectRandomPizzaTopping(PizzaToppings.generateRandomToppings(2));
 
             pizzaOrderFormPage.clickResetButton();
 
             // Assert that user is able to reset pizza size and toppings
             // Second soft assert is expected to fail, because Reset button doesn't reset toppings
             SoftAssert softAssert = new SoftAssert();
-            Assert.assertTrue(pizzaOrderFormPage.getDropDownValueSize().equals("- $00.00"));
-            Assert.assertTrue(pizzaOrderFormPage.getDropDownValueTopping1().equals("Choose a Toppings 1"), "This soft assert is expected to fail");
+            softAssert.assertTrue(pizzaOrderFormPage.getDropDownValueSize().equals("- $00.00"));
+            softAssert.assertTrue(pizzaOrderFormPage.getDropDownValueTopping1().equals("Choose a Toppings 1"), "This soft assert is expected to fail");
+            softAssert.assertAll();
         }
 }

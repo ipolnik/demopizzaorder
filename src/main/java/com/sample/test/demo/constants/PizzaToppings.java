@@ -1,6 +1,8 @@
 package com.sample.test.demo.constants;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public enum PizzaToppings {
@@ -31,5 +33,12 @@ public enum PizzaToppings {
         int length = values.length;
         int randIndex = new Random().nextInt(length);
         return values[randIndex];
+    }
+    public static List<String> generateRandomToppings(int amount) {
+        List<String> toppings = new ArrayList<>();
+        for(int i = 0; i < amount; i++){
+            toppings.add(PizzaToppings.generateRandomTopping().getDisplayName());
+        }
+        return toppings;
     }
 }

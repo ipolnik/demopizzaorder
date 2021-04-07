@@ -16,29 +16,29 @@ public class TestBase {
 
     @BeforeMethod
     public void initDriver(){
+        initializeDriver();
+        navigateToSite();
         pizzaOrderFormPage = new PizzaOrderFormPage(driver);
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() throws Exception {
+        try {
+            driver.quit();
+        } catch (Exception e) {
+            // We should not swallow assertions, if we catch assertion, we should do something. Like logging the exception
+            throw new Exception(e);
+        }
     }
 
     @BeforeClass(alwaysRun = true)
     public void init() throws Throwable {
         config = new Configuration();
         url = config.getUrl();
-        initializeDriver();
-        navigateToSite();
-
     }
 
     private void navigateToSite() {
         driver.get(url);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        try {
-            driver.quit();
-
-        } catch (Exception e) {
-        }
     }
 
     private void initializeDriver() {

@@ -7,12 +7,11 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Random;
 
-public class PizzaOrderFormPage extends PageBase implements IPizzaOrder {
+public class PizzaOrderFormPage extends PageBase implements Pizza {
     public PizzaOrderFormPage(WebDriver driver) { super(driver); }
 
     public static By pizza1 = By.id("pizza1Pizza");
-    public static By pizza1Toppings1 = By.xpath("//div[@id='pizza1']//select[@class='toppings1']");
-    public static By pizza1Toppings2 = By.xpath("//div[@id='pizza1']//select[@class='toppings2']");
+    public static By pizza1Toppings = By.xpath("//*[contains(@class,'toppings')]");
     public static By pizza1Quantity = By.id("pizza1Qty");
     public static By pizza1Cost = By.id("pizza1Cost");
     public static By radioCreditCard  = By.id("ccpayment");
@@ -28,12 +27,10 @@ public class PizzaOrderFormPage extends PageBase implements IPizzaOrder {
     public void selectRandomPizzaSize(String pizzaType){
         selectFromDropDown(pizza1, pizzaType);
     }
-    public void selectRandomPizzaTopping1(String topping){
-        selectFromDropDown(pizza1Toppings1, topping);
-    }
-
-    public void selectRandomPizzaTopping2(String topping){
-        selectFromDropDown(pizza1Toppings2, topping);
+    public void selectRandomPizzaTopping(List<String> topping){
+        List<WebElement> toppings = findElements(pizza1Toppings);
+        for(int i = 0; i < toppings.size(); i++)
+        selectFromDropDown(toppings.get(i), topping.get(i));
     }
 
     public void selectRandomQuantity(int min, int max){
@@ -75,7 +72,7 @@ public class PizzaOrderFormPage extends PageBase implements IPizzaOrder {
     }
 
     public String getDropDownValueTopping1(){
-        String value = getElementTextByValue(pizza1Toppings1);
+        String value = getElementTextByValue(findElements(pizza1Toppings).get(0));
         return value;
     }
 }

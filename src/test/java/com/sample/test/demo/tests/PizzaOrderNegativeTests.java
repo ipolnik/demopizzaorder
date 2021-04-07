@@ -10,8 +10,6 @@ public class PizzaOrderNegativeTests extends TestBase {
     @Test
     public void pizzaOrderNegativePath(){
         String randomPizzaType = PizzaTypes.generateRandomType().getDisplayName();
-        String randomPizzaTopping1 = PizzaToppings.generateRandomTopping().getDisplayName();
-        String randomPizzaTopping2 = PizzaToppings.generateRandomTopping().getDisplayName();
 
         /**
          * User not able to place an order if pickup information is missing
@@ -29,9 +27,7 @@ public class PizzaOrderNegativeTests extends TestBase {
 
         pizzaOrderFormPage.selectRandomPizzaSize(randomPizzaType);
 
-        pizzaOrderFormPage.selectRandomPizzaTopping1(randomPizzaTopping1);
-
-        pizzaOrderFormPage.selectRandomPizzaTopping2(randomPizzaTopping2);
+        pizzaOrderFormPage.selectRandomPizzaTopping(PizzaToppings.generateRandomToppings(2));
 
         pizzaOrderFormPage.selectRandomQuantity(1, 10);
 

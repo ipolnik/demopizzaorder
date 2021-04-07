@@ -1,9 +1,10 @@
 package com.sample.test.demo;
 
-public interface IPizzaOrder {
+import java.util.List;
+
+public interface Pizza {
     void selectRandomPizzaSize(String pizzaType);
-    void selectRandomPizzaTopping1(String topping);
-    void selectRandomPizzaTopping2(String topping);
+    void selectRandomPizzaTopping(List<String> topping);
     void selectRandomQuantity(int min, int max);
     void enterRandomPickupInformation();
     void selectRandomPayment();
